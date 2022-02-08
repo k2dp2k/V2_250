@@ -1,0 +1,62 @@
+[server]
+host: 0.0.0.0
+port: 7125
+enable_debug_logging: false
+config_path: /home/pi/klipper_config
+max_upload_size: 1024
+database_path: ~/.moonraker_database
+temperature_store_size: 1200
+gcode_store_size:  1000
+
+[authorization]
+cors_domains:
+    https://my.mainsail.xyz
+    http://my.mainsail.xyz
+    http://*.local
+    http://*.lan
+    *.local
+
+trusted_clients:
+    10.0.0.0/8
+    127.0.0.0/8
+    169.254.0.0/16
+    172.16.0.0/12
+    192.168.0.0/24
+    127.0.0.1
+    192.168.2.0/24
+[update_manager]
+enable_auto_refresh: False
+
+[update_manager mainsail]
+type: web_beta
+repo: mainsail-crew/mainsail
+path: ~/mainsail
+
+[update_manager client KlipperScreen]
+type: git_repo
+path: /home/pi/KlipperScreen
+origin: https://github.com/jordanruthe/KlipperScreen.git
+env: /home/pi/.KlipperScreen-env/bin/python
+requirements: scripts/KlipperScreen-requirements.txt
+install_script: scripts/KlipperScreen-install.sh
+
+[update_manager klipper-mcu-update]
+type: git_repo
+origin: https://github.com/Klipper3d/klipper.git
+path: ~/klipper
+
+[history]
+
+[power 24V]
+type: tasmota
+address: 192.168.0.203
+timer: 20
+output_id: 1
+locked_while_printing: True
+
+[power 230V]
+type: tasmota
+address: 192.168.0.203
+timer: 20
+output_id: 2
+locked_while_printing: True
