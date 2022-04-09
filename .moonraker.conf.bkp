@@ -34,12 +34,16 @@ trusted_clients =
 	192.168.2.0/24
 
 [update_manager]
-enable_auto_refresh = False
+channel = dev
+enable_repo_debug = False
+enable_auto_refresh = True
+enable_system_updates = True
 
 [update_manager mainsail]
 type = web
+channel = beta
 repo = mainsail-crew/mainsail
-path = ~/mainsail
+path = /home/pi/mainsail
 
 [update_manager client KlipperScreen]
 type = git_repo
