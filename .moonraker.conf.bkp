@@ -11,7 +11,7 @@ database_path = ~/.moonraker_database
 config_path = /home/pi/klipper_config
 
 [machine]
-provider = systemd_cli
+provider = systemd_dbus
 
 [data_store]
 temperature_store_size = 1200
@@ -44,6 +44,11 @@ type = web
 channel = beta
 repo = mainsail-crew/mainsail
 path = /home/pi/mainsail
+
+[update_manager webcamd]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
 
 [update_manager client KlipperScreen]
 type = git_repo
